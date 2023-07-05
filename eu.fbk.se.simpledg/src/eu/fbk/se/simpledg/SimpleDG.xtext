@@ -1,0 +1,42 @@
+grammar eu.fbk.se.simpledg.SimpleDG with org.eclipse.xtext.common.Terminals
+
+generate simpleDG "http://www.fbk.eu/se/simpledg/SimpleDG"
+
+DirectedGraph:
+	"Nodes" COLON nodesDefinition+=NodeDefinition+ SEMICOLON
+	"Edges" COLON edgesDefinition+=EdgeDefinition*	SEMICOLON
+	;
+
+
+NodeDefinition:
+	nodeName=NODE_NAME 
+;
+
+EdgeDefinition:
+	edge=Edge 
+;
+
+Edge:
+	source=NODE_NAME TRANS target=NODE_NAME
+;
+
+terminal NODE_NAME :
+	ID
+;
+
+terminal SEMICOLON :
+	";"
+;
+
+terminal COMMA :
+	","
+;
+
+terminal COLON :
+	":"
+;
+
+
+terminal TRANS :
+	"->"
+;

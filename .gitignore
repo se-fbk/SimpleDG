@@ -1,0 +1,8 @@
+**/src-gen/**
+**/xtend-gen/**
+**/target/**
+**/model/**
+**/plugin.xml_gen
+**/.DS_Store
+**/.launch
+/bin/
