@@ -57,7 +57,15 @@ public class GraphUtils {
 	 * @return
 	 */
 	public static boolean areNodesDirectlyConnected(DirectedGraph dg, NodeDefinition nodeA, NodeDefinition nodeB  ){
-		return false;		
+		List<NodeDefinition> outNodesA = getNextNodes(dg, nodeA);
+		String nodeNameB = nodeB.getNodeName();
+		for (NodeDefinition nodeDef : outNodesA) {
+			if (nodeDef.getNodeName().equals(nodeNameB)) {
+				return true;
+			}
+		}
+		return false;
+
 	}
 	
 }

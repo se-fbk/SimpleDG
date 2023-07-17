@@ -7,9 +7,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.xtext.xbase.lib.Pair;
 import org.eclipse.xtext.validation.Check;
 
 import eu.fbk.se.simpledg.simpleDG.DirectedGraph;
+import eu.fbk.se.simpledg.simpleDG.Edge;
 import eu.fbk.se.simpledg.simpleDG.EdgeDefinition;
 import eu.fbk.se.simpledg.simpleDG.NodeDefinition;
 import eu.fbk.se.simpledg.simpleDG.SimpleDGPackage;
@@ -67,7 +69,18 @@ public class SimpleDGValidator extends AbstractSimpleDGValidator {
 	 */
 	@Check
 	public void checkDuplicatedNodes(DirectedGraph dg) {
-		
+
+		Set<String> nodesList = new HashSet<>();
+		EList<NodeDefinition> nodesDefinition = dg.getNodesDefinition();
+		for(NodeDefinition nodeDef : nodesDefinition) {
+			String nodeName = nodeDef.getNodeName();
+			if (nodesList.contains(nodeName)) {
+				error("Node \"" + nodeName + "\" is duplicated",nodeDef, SimpleDGPackage.Literals.NODE_DEFINITION__NODE_NAME );
+				break;
+			}
+			nodesList.add(nodeName);
+		}
+
 	}
 	
 	
@@ -78,10 +91,27 @@ public class SimpleDGValidator extends AbstractSimpleDGValidator {
 	 */
 	@Check
 	public void checkDuplicatedEdges(DirectedGraph dg) {
-		
+
+		Set<Pair<String, String>> edgesList = new HashSet<>();
+
+		EList<EdgeDefinition> edgesDefinition = dg.getEdgesDefinition();
+		for(EdgeDefinition edgeDef : edgesDefinition) {
+
+			Edge edge = edgeDef.getEdge();
+			String source = edge.getSource();
+			String target = edge.getTarget();
+
+			Pair<String, String> edgeKey = new Pair<String, String>(source, target);
+
+			if (edgesList.contains(edgeKey)) {
+				error("Edge \"" + source + "" + target + "\" is duplicated",edgeDef, SimpleDGPackage.Literals.EDGE_DEFINITION__EDGE );
+				break;
+			}
+
+			edgesList.add(edgeKey);
+
+		}
+
 	}
-	
-	
-	
 	
 }

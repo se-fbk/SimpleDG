@@ -20,19 +20,19 @@ import java.util.List
 class SimpleDGValidationTest {
 	@Inject
 	ParseHelper<DirectedGraph> parseHelper
-	
+
 	@Inject ValidationTestHelper validationTestHelper
-	
+
 	@Test
 	def void validGraph() {
 		val result = parseHelper.parse('''
 			Nodes:
-				^A 
+				^A
 				^B
-				^C	
+				^C
 			;
 			Edges:
-				^B -> ^A	
+				^B -> ^A
 				^A -> ^C
 			;
 		''')
@@ -43,17 +43,17 @@ class SimpleDGValidationTest {
 		Assertions.assertTrue(issues.size == 0)
 		validationTestHelper.assertNoIssues(result)
 	}
-	
+
 	@Test
 	def void invalidGraph() {
 		val result = parseHelper.parse('''
 			Nodes:
-				^A 
+				^A
 				^B
-				^C	
+				^C
 			;
 			Edges:
-				^B -> ^A	
+				^B -> ^A
 				^A -> ^C
 				^A -> ^D
 				^D -> ^F
@@ -63,6 +63,47 @@ class SimpleDGValidationTest {
 		val errors = result.eResource.errors
 		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
 		val issues = validationTestHelper.validate(result) as List<Issue>
-		Assertions.assertTrue(issues.size == 3)
+		Assertions.assertTrue(issues.size == 1)
+	}
+
+	@Test
+	def void duplicatedNodeGraph() {
+		val result = parseHelper.parse('''
+			Nodes:
+				^A
+				^A
+				^B
+				^C
+			;
+			Edges:
+				^A -> ^C
+			;
+		''')
+		Assertions.assertNotNull(result)
+		val errors = result.eResource.errors
+		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
+		val issues = validationTestHelper.validate(result) as List<Issue>
+		Assertions.assertTrue(issues.size == 1)
+	}
+
+	@Test
+	def void duplicatedEdgeGraph() {
+		val result = parseHelper.parse('''
+			Nodes:
+				^A
+				^B
+				^C
+			;
+			Edges:
+				^A -> ^B
+				^A -> ^C
+				^A -> ^B
+			;
+		''')
+		Assertions.assertNotNull(result)
+		val errors = result.eResource.errors
+		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
+		val issues = validationTestHelper.validate(result) as List<Issue>
+		Assertions.assertTrue(issues.size == 1)
 	}
 }
