@@ -3,16 +3,9 @@
  */
 package eu.fbk.se.simpledg.validation;
 
-import java.util.HashSet;
-import java.util.Set;
-
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtext.validation.Check;
 
-import eu.fbk.se.simpledg.simpleDG.DirectedGraph;
-import eu.fbk.se.simpledg.simpleDG.EdgeDefinition;
-import eu.fbk.se.simpledg.simpleDG.NodeDefinition;
-import eu.fbk.se.simpledg.simpleDG.SimpleDGPackage;
+import eu.fbk.se.simpledg.simpleDG.DotGraphs;
 
 
 /**
@@ -26,36 +19,12 @@ public class SimpleDGValidator extends AbstractSimpleDGValidator {
 
 	/**
 	 * Check if all the nodes used in the EdgesDefinition are defined in NodesDefinition
-	 * @param dg A DirectedGraph object
+	 * @param dg A DotGraphs object
 	 */
 	@Check
-	public void checkAllNodesDefined(DirectedGraph dg) {
+	public void checkAllNodesDefined(DotGraphs dg) {
 			
-		// Get all the defined nodes
-		Set<String> nodesList = new HashSet<>();
-		EList<NodeDefinition> nodesDefinition = dg.getNodesDefinition();						
-		for(NodeDefinition nodeDef : nodesDefinition) {
-			 nodesList.add(nodeDef.getNodeName());
-		}
 		
-		// Iterate over edges
-		EList<EdgeDefinition> edgesDefinition = dg.getEdgesDefinition();
-		for(EdgeDefinition edgeDef : edgesDefinition) {
-			
-			String source = edgeDef.getEdge().getSource();
-			if (! nodesList.contains(source)) {
-				error(UNDEFINED_NODE+source,edgeDef, SimpleDGPackage.Literals.EDGE_DEFINITION__EDGE );
-				break;
-			}
-
-			String target = edgeDef.getEdge().getTarget();
-			if (! nodesList.contains(target)) {
-				error(UNDEFINED_NODE+target,edgeDef, SimpleDGPackage.Literals.EDGE_DEFINITION__EDGE );
-				break;
-			}
-
-			
-		}
 	
 	}
 	
@@ -63,10 +32,10 @@ public class SimpleDGValidator extends AbstractSimpleDGValidator {
 	/**
 	 * Check if the node names are unique. 
 	 * Duplicated node names are not allowed and the validator has to return an error.
-	 * @param dg A DirectGraph object
+	 * @param dg A DotGraphs object
 	 */
 	@Check
-	public void checkDuplicatedNodes(DirectedGraph dg) {
+	public void checkDuplicatedNodes(DotGraphs dg) {
 		
 	}
 	
@@ -74,10 +43,10 @@ public class SimpleDGValidator extends AbstractSimpleDGValidator {
 	/**
 	 * Check if there are duplicated edges. 
 	 * Duplicated edges are not allowed and the validator has to return an error.
-	 * @param dg A DirectGraph object
+	 * @param dg A DotGraphs object
 	 */
 	@Check
-	public void checkDuplicatedEdges(DirectedGraph dg) {
+	public void checkDuplicatedEdges(DotGraphs dg) {
 		
 	}
 	

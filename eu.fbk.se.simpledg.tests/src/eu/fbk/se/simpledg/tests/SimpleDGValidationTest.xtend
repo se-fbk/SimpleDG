@@ -10,7 +10,7 @@ import org.eclipse.xtext.testing.util.ParseHelper
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.^extension.ExtendWith
-import eu.fbk.se.simpledg.simpleDG.DirectedGraph
+import eu.fbk.se.simpledg.simpleDG.DotGraphs
 import org.eclipse.xtext.testing.validation.ValidationTestHelper
 import org.eclipse.xtext.validation.Issue
 import java.util.List
@@ -19,22 +19,17 @@ import java.util.List
 @InjectWith(SimpleDGInjectorProvider)
 class SimpleDGValidationTest {
 	@Inject
-	ParseHelper<DirectedGraph> parseHelper
+	ParseHelper<DotGraphs> parseHelper
 	
 	@Inject ValidationTestHelper validationTestHelper
 	
 	@Test
 	def void validGraph() {
 		val result = parseHelper.parse('''
-			Nodes:
-				^A 
-				^B
-				^C	
-			;
-			Edges:
-				^B -> ^A	
-				^A -> ^C
-			;
+			digraph {
+				B -> A	
+				A -> C
+			}
 		''')
 		Assertions.assertNotNull(result)
 		val errors = result.eResource.errors
@@ -47,22 +42,17 @@ class SimpleDGValidationTest {
 	@Test
 	def void invalidGraph() {
 		val result = parseHelper.parse('''
-			Nodes:
-				^A 
-				^B
-				^C	
-			;
-			Edges:
-				^B -> ^A	
-				^A -> ^C
-				^A -> ^D
-				^D -> ^F
-			;
+			digraph {
+				B -> A	
+				A -> C
+				A -> D
+				D -> F ["color"=red]
+			}
 		''')
 		Assertions.assertNotNull(result)
 		val errors = result.eResource.errors
 		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
 		val issues = validationTestHelper.validate(result) as List<Issue>
-		Assertions.assertTrue(issues.size == 3)
+		Assertions.assertTrue(issues.size == 0)
 	}
 }
