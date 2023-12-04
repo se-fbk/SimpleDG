@@ -1,0 +1,7 @@
+graph{
+	A ["color"=blue]
+	A -- A
+	A -- B
+	A -- C ["color"=red]
+	C -- D
+}
