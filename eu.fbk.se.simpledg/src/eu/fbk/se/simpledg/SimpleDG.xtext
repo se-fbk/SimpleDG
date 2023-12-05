@@ -108,7 +108,7 @@ terminal ID:
 	 ;
 
 enum EdgeOp:
-	directed="->" | undirected="--";
+	directed="=>" | undirected="==";
 
 enum GraphType:
 	graph="graph" | digraph="digraph";
