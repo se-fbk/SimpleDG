@@ -12,9 +12,9 @@ digraph g{
 ```
 corresponds to the following directed graph
 ```mermaid
-graph g;
-	A-->A;
-	A-->B;
+graph TD
+	id1((A)) --> id1((A))
+	id1((A)) --> id2((B))
 ```
 
 #### Specify an undirected graph
@@ -29,11 +29,11 @@ graph{
 ```
 corresponds to the following undirected graph
 ```mermaid
-graph g;
-	A--A;
-	A--B;
-	A--C;
-	C--D;
+graph TD
+	id1((A)) --- id1((A))
+	id1((A)) --- id2((B))
+	id1((A)) --- id3((C))
+	id3((C)) --- id4((D))
 ```
 
 
