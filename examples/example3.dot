@@ -1,5 +1,5 @@
 digraph {
-	a -> b ["label"="a"]
-	b -> c ["label"="b"]
-	c -> c ["label"="loop"]
+	a => b
+	b => c
+	c => c
 }

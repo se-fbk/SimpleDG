@@ -1,4 +1,4 @@
 digraph g{
-	A -> A ["color"=red, "arrowhead"=diamond]
-	A -> B
+	A => A
+	A => B
 }
