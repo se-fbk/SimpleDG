@@ -1,0 +1,6 @@
+graph{
+	a == b
+	b == c
+	b == d
+	d == e
+}

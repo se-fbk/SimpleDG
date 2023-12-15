@@ -1,0 +1,2 @@
+nodes,edges,is_tree,is_dag,is_complete
+5,4,True,False,False
