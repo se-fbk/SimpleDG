@@ -23,7 +23,13 @@
    ```
 ## Output
 #### output
-* find all output for solution-c.py in separate csv files with corresponding input file name
+* find all output for `solution-c.py` in separate csv files with corresponding input file name
 
 #### output2
 * find a report in one csv file
+
+| FileName | GraphType | Nodes | Edges
+| --- | --- | --- | --- |
+| example 3 | Complete | 3 | 3 |
+| example 4 | DAG | 6 | 8 |
+| example 5 | Tree | 5 | 4 |
