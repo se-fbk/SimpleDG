@@ -1,8 +1,9 @@
+#Import all the packages here
 import os
 import networkx as nx
 import re
 
-class GraphLoader:
+class GraphLoader: # Class will return the loaded DOT files
     def __init__(self, file_path):
         self.file_path = file_path
 
@@ -34,7 +35,7 @@ class GraphLoader:
             print(f"Error loading the graph: {e}")
             return None
 
-class GraphAnalyzer:
+class GraphAnalyzer: #Class will analyze the graphs and will return the results 
     @staticmethod
     def is_complete(graph):
         if graph is None:
@@ -62,14 +63,14 @@ class GraphAnalyzer:
             "Is Complete Graph": is_complete_graph,
         }
 
-class GraphReporter:
+class GraphReporter: #Class will generate the reports for all the provided graphs
     @staticmethod
     def print_report(file_name, report):
         print(f"\nGraph Statistics for {file_name}:")
         for stat, value in report.items():
             print(f"{stat}: {value}")
 
-class GraphProcessor:
+class GraphProcessor: # Class will process all the data
     @staticmethod
     def main(example):
         folder_path = "ExampleDOTFiles"        
