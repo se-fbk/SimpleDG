@@ -1,0 +1,6 @@
+graph ex2{
+	A -- A;
+	A -- B;
+	A -- C;
+	C -- D;
+}

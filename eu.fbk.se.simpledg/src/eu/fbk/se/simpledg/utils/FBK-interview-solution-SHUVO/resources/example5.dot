@@ -1,0 +1,6 @@
+graph ex5{
+    a -- b;
+    b -- c;
+    b -- d;
+    d -- e;
+}

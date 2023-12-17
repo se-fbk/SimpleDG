@@ -1,0 +1,8 @@
+File Name,Graph Type,Number of Nodes,Number of Edges
+example4,DAG,6,8
+example7,DAG,6,11
+example1,Others,2,2
+example6,DAG,7,7
+example5,Tree,5,4
+example2,Others,4,4
+example3,Complete,3,3

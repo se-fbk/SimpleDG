@@ -1,0 +1,13 @@
+graph ex7{
+    A -- E;
+    A -- B;
+    A -- D;
+    B -- F;
+    B -- C;
+    B -- E;
+    B -- D;
+    C -- F;
+    C -- E;
+    D -- E;
+    E -- F;
+}
