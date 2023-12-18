@@ -74,7 +74,7 @@ class GraphProcessor: # Class will process all the data
     @staticmethod
     def main(example):
 
-        folder_path = "eu.fbk.se.simpledg/src/eu/fbk/se/simpledg/utils/FBK_Interview_Assessment/resources/"   
+        folder_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'resources')    
         file_path = os.path.join(folder_path, example)
 
         graph_loader = GraphLoader(file_path)
