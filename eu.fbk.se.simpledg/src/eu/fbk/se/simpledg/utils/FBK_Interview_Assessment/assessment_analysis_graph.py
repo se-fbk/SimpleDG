@@ -73,8 +73,9 @@ class GraphReporter: #Class will generate the reports for all the provided graph
 class GraphProcessor: # Class will process all the data
     @staticmethod
     def main(example):
-        folder_path = "ExampleDOTFiles"        
-        file_path = os.path.join(os.path.expanduser("~"), "Documents", "runtime-EclipseApplication", folder_path, example)
+
+        folder_path = "eu.fbk.se.simpledg/src/eu/fbk/se/simpledg/utils/FBK_Interview_Assessment/resources/"   
+        file_path = os.path.join(folder_path, example)
 
         graph_loader = GraphLoader(file_path)
         graph = graph_loader.load_graph()
@@ -86,7 +87,7 @@ class GraphProcessor: # Class will process all the data
         graph_reporter.print_report(example, report)
 
 if __name__ == "__main__":
-    examples = ["example4.dot", "example5.dot", "example6.dot", "example7.dot"]
+    examples = ["example1.dot","example2.dot","example3.dot","example4.dot", "example5.dot", "example6.dot", "example7.dot"]
 
     for example in examples:
         GraphProcessor.main(example)

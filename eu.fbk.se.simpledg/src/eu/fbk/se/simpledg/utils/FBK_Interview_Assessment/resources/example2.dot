@@ -1,0 +1,6 @@
+digraph Example2Graph {
+	A == A
+	A == B
+	A == C
+	C == D
+}

@@ -1,0 +1,5 @@
+digraph Example3Graph  {
+	a => b
+	b => c
+	c => c
+}

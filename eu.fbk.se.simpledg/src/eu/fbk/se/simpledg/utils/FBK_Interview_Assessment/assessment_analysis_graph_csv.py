@@ -69,7 +69,7 @@ class CSVWriter:
 
 def main():
     folder_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'resources')
-    examples = ["example4.dot", "example5.dot", "example6.dot", "example7.dot"]
+    examples = ["example1.dot","example2.dot","example3.dot","example4.dot", "example5.dot", "example6.dot", "example7.dot"]
 
     # Create the 'output' folder if it doesn't exist
     output_folder = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'output')
