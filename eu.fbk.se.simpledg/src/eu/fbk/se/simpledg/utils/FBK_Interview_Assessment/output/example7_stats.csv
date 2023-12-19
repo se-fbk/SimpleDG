@@ -1,0 +1,2 @@
+File Name,Number of Nodes,Number of Edges,Is Tree,Is DAG,Is Complete Graph
+example7_stats,6,11,False,False,False

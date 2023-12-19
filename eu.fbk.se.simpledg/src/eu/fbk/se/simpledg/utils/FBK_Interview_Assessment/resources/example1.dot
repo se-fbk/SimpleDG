@@ -1,0 +1,4 @@
+digraph Example1Graph {
+	A => A
+	A => B
+}

@@ -1,0 +1,13 @@
+digraph Example7Graph {
+A == B
+A == D
+A == E
+B == C
+B == D
+B == E
+B == F
+C == E
+C == F
+D == E
+E == F
+}
