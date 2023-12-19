@@ -1,0 +1,2 @@
+Graph Name,File,Number of Nodes,Number of Edges,Is Tree,Is DAG,Is Complete
+Graph,C:\Users\farha\git\SimpleDG\eu.fbk.se.simpledg\src\eu\fbk\se\simpledg\utils\resources\example5.dot,5,4,False,False,False
