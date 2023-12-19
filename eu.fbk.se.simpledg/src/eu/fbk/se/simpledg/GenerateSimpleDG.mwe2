@@ -32,7 +32,7 @@ Workflow {
 		}
 		language = StandardLanguage {
 			name = "eu.fbk.se.simpledg.SimpleDG"
-			fileExtensions = "sdg"
+			fileExtensions = "dot"
 
 			serializer = {
 				generateStub = false

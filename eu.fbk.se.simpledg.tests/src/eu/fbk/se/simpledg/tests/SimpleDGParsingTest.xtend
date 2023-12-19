@@ -10,26 +10,34 @@ import org.eclipse.xtext.testing.util.ParseHelper
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.^extension.ExtendWith
-import eu.fbk.se.simpledg.simpleDG.DirectedGraph
+import eu.fbk.se.simpledg.simpleDG.DotGraphs
 
 @ExtendWith(InjectionExtension)
 @InjectWith(SimpleDGInjectorProvider)
 class SimpleDGParsingTest {
 	@Inject
-	ParseHelper<DirectedGraph> parseHelper
+	ParseHelper<DotGraphs> parseHelper
 	
 	@Test
-	def void loadModel() {
+	def void directed() {
 		val result = parseHelper.parse('''
-			Nodes:
-				^A 
-				^B
-				^C	
-			;
-			Edges:
-				^B -> ^A	
-				^A -> ^C
-			;
+			digraph {
+				B -> A ["arrowhead" = diamond]
+				A -> C ["color"=green]
+			}
+		''')
+		Assertions.assertNotNull(result)
+		val errors = result.eResource.errors
+		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
+	}
+	
+	@Test
+	def void undirected() {
+		val result = parseHelper.parse('''
+			graph {
+				B -- A 
+				A -- C ["color"=green]
+			}
 		''')
 		Assertions.assertNotNull(result)
 		val errors = result.eResource.errors

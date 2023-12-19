@@ -1,0 +1,12 @@
+graph g{
+    A == B
+    A == D
+    A == E
+    B == C
+    B == D
+    B == F
+    B == F
+    C == F
+    C == E
+    D == E
+}
