@@ -1,0 +1,8 @@
+graph {
+  A == B
+  B == C
+  D == B
+  C == E
+  D == F
+  D == G
+}
