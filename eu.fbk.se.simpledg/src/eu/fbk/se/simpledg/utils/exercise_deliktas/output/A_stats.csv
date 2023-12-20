@@ -1,0 +1,17 @@
+File Name, Node Count, Edge Count, Is Tree, Is DAG, Is Complete
+example1.dot,6,11,false,false,false
+example10.dot,7,6,true,false,false
+example11.dot,5,4,true,false,false
+example12.dot,7,6,false,false,false
+example13.dot,4,4,false,false,false
+example14.dot,4,6,false,false,true
+example15.dot,3,3,false,false,true
+example16.dot,3,3,false,false,true
+example2.dot,5,10,false,true,false
+example3.dot,6,15,false,false,true
+example4.dot,6,8,false,true,false
+example5.dot,5,4,true,false,false
+example6.dot,7,7,false,true,false
+example7.dot,6,11,false,false,false
+example8.dot,5,4,false,false,false
+example9.dot,5,5,false,false,false
